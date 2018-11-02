@@ -8,7 +8,7 @@
     <xsd:element name="color" type="xsd:string"/>
     <xsd:element name="length" type="xsd:positiveInteger"/>
     <xsd:element name="heliophyte" type="xsd:boolean"/>
-    <xsd:element name="optimalTemperature" type="xsd:int"/>
+    <xsd:element name="optimalTemperature" type="xsd:integer"/>
     <xsd:element name="withSpikes" type="xsd:boolean"/>
     <xsd:element name="multirowed" type="xsd:boolean"/>
 
@@ -44,10 +44,10 @@
 
     <xsd:element name = "Flower">
         <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element ref="Rose"/>
-                <xsd:element ref="Peony"/>
-            </xsd:sequence>
+            <xsd:all>
+                <xsd:element ref="Rose" />
+                <xsd:element ref="Peony" />
+            </xsd:all>
         </xsd:complexType>
     </xsd:element>
 

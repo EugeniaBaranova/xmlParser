@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flower>
+
+    <Rose>
+        <name>New Dawn</name>
+        <origin>China</origin>
+        <soil>CHERNOZEMS</soil>
+        <color>red</color>
+        <length>10</length>
+        <heliophyte>true</heliophyte>
+        <optimalTemperature>22</optimalTemperature>
+        <withSpikes>true</withSpikes>
+    </Rose>
+
+    <Rose>
+        <name>New Dawn</name>
+        <origin>China</origin>
+        <soil>PODZOL</soil>
+        <color>yellow</color>
+        <length>10</length>
+        <heliophyte>true</heliophyte>
+        <optimalTemperature>22</optimalTemperature>
+        <withSpikes>true</withSpikes>
+    </Rose>
+
+    <Peony>
+        <name>Akron</name>
+        <origin>China</origin>
+        <soil>CHERNOZEMS</soil>
+        <color>red</color>
+        <length>12</length>
+        <heliophyte>true</heliophyte>
+        <optimalTemperature>22</optimalTemperature>
+        <multirowed>false</multirowed>
+    </Peony>
+
+    <Peony>
+        <name>Sorbet</name>
+        <origin>China</origin>
+        <soil>PODZOL</soil>
+        <color>red</color>
+        <length>8</length>
+        <heliophyte>true</heliophyte>
+        <optimalTemperature>22</optimalTemperature>
+        <multirowed>true</multirowed>
+    </Peony>
+
+</Flower>
