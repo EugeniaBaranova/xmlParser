@@ -2,10 +2,7 @@ package com.epam.xml.parser;
 
 import com.epam.xml.entity.*;
 import org.apache.log4j.Logger;
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -33,7 +30,9 @@ public class DomParser implements Parser{
                 Document document = documentBuilder.parse(filePath.get());
 
                 document.getDocumentElement().normalize();
-                if (document.hasChildNodes()) {
+
+                Element documentElement = document.getDocumentElement();
+                if (documentElement.hasChildNodes()) {
                     NodeList flowers = document.getChildNodes();
                     for (int i = 0; i < flowers.getLength(); i++) {
 
