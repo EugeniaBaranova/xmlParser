@@ -7,15 +7,15 @@ import com.epam.xmlparsing.entity.Soil;
 import javax.xml.bind.annotation.*;
 
 @XmlSeeAlso({Flower.class})
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Rose")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Rose extends Flower {
 
     @XmlElement(name = "with-spikes")
     private boolean withSpikes;
 
     public Rose() {
-
+        super();
     }
 
     public Rose(String name,

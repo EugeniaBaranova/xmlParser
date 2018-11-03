@@ -4,14 +4,14 @@ import javax.xml.bind.annotation.*;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "greenhouse")
-public class Greenhouse {
+@XmlRootElement(name = "Flowers")
+public class Flowers {
 
 
 @XmlElements({
-        @XmlElement(name="flower", type = Flower.class),
-        @XmlElement(name="rose", type = Rose.class),
-        @XmlElement(name="peony", type = Peony.class)
+        @XmlElement(name="Flower", type = Flower.class),
+        @XmlElement(name="Rose", type = Rose.class),
+        @XmlElement(name="Peony", type = Peony.class)
 })
 
 

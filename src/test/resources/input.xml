@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Flower>
+<Flowers>
 
-    <Rose name="New Down">
-        <origin>China</origin>
-        <soil>chernozems</soil>
-        <color>red</color>
+    <Rose name="New Dawn">
+        <origin>CHINA</origin>
+        <soil>CHERNOZEMS</soil>
+        <color>RED</color>
         <length>10</length>
         <heliophyte>true</heliophyte>
-        <optimalTemperature>22</optimalTemperature>
-        <withSpikes>true</withSpikes>
+        <optimal-temperature>22</optimal-temperature>
+        <with-spikes>true</with-spikes>
     </Rose>
 
     <Rose name = "New Dawn">
-        <origin>China</origin>
+        <origin>CHINA</origin>
         <soil>PODZOL</soil>
         <color>YELLOW</color>
         <length>10</length>
         <heliophyte>true</heliophyte>
-        <optimalTemperature>22</optimalTemperature>
-        <withSpikes>false</withSpikes>
+        <optimal-temperature>22</optimal-temperature>
+        <with-spikes>false</with-spikes>
     </Rose>
 
     <Peony name="Akron">
-        <origin>China</origin>
+        <origin>CHINA</origin>
         <soil>CHERNOZEMS</soil>
         <color>RED</color>
         <length>12</length>
         <heliophyte>true</heliophyte>
-        <optimalTemperature>22</optimalTemperature>
+        <optimal-temperature>22</optimal-temperature>
         <multirowed>false</multirowed>
     </Peony>
 
     <Peony name = "Sorbet">
-        <origin>China</origin>
+        <origin>CHINA</origin>
         <soil>PODZOL</soil>
         <color>RED</color>
         <length>8</length>
         <heliophyte>true</heliophyte>
-        <optimalTemperature>22</optimalTemperature>
+        <optimal-temperature>22</optimal-temperature>
         <multirowed>true</multirowed>
     </Peony>
 
-</Flower>
+</Flowers>

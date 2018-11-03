@@ -16,7 +16,7 @@ import static org.hamcrest.core.Is.is;
 
 public class JaxbParserTest {
 
-    private static final String FILE_NAME = "input.xml";
+    private static final String FILE_NAME = "src/test/resources/input.xml";
     private static final String NONEXISTENT_FILE_NAME = "xnjksdkv";
 
     private static final String NAME_NEW_DOWN = "New Dawn";

@@ -7,15 +7,15 @@ import com.epam.xmlparsing.entity.Soil;
 import javax.xml.bind.annotation.*;
 
 @XmlSeeAlso({Flower.class})
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Peony")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Peony extends Flower {
 
     @XmlElement(name = "multirowed")
     private boolean multirowed;
 
     public Peony() {
-
+        super();
     }
 
     public Peony(String name,
