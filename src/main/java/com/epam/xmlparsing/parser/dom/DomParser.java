@@ -1,6 +1,12 @@
-package com.epam.xml.parser;
+package com.epam.xmlparsing.parser.dom;
 
-import com.epam.xml.entity.*;
+import com.epam.xmlparsing.entity.*;
+import com.epam.xmlparsing.entity.greenhouse.Flower;
+import com.epam.xmlparsing.entity.greenhouse.Peony;
+import com.epam.xmlparsing.entity.greenhouse.Rose;
+import com.epam.xmlparsing.parser.FilePathGetter;
+import com.epam.xmlparsing.parser.Parser;
+import com.epam.xmlparsing.parser.exception.XmlParserException;
 import org.apache.log4j.Logger;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -9,25 +15,28 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.*;
 
-public class DomParser implements Parser{
+public class DomParser implements Parser {
 
     private Logger logger = Logger.getLogger(DomParser.class);
 
-    public List<Flower> parse(String fileName) {
+    private FilePathGetter filePathGetter = new FilePathGetter();
+
+    public List<Flower> parse(String fileName) throws XmlParserException {
 
         List<Flower> flowerList = new ArrayList<>();
 
         try {
-            Optional<String> filePath = getFilePath(fileName);
-            if(filePath.isPresent()) {
+            Optional<String> filePathOptional = filePathGetter.getFilePath(fileName);
+            if (filePathOptional.isPresent()) {
+
+                String filePath = filePathOptional.get();
+
                 DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-                Document document = documentBuilder.parse(filePath.get());
+                Document document = documentBuilder.parse(filePath);
 
                 document.getDocumentElement().normalize();
 
@@ -41,10 +50,10 @@ public class DomParser implements Parser{
                         if (flower.getNodeType() == Node.ELEMENT_NODE) {
 
                             String flowerName = flower.getNodeName();
-                            if(Rose.class
+                            if (Rose.class
                                     .getSimpleName()
-                                    .equals(flowerName)){
-                                Rose rose = new Rose();
+                                    .equals(flowerName)) {
+                               /* Rose rose = new Rose();
                                 Map<String, String> valuesOfFields = new HashMap<>();
                                 NodeList childNodesOfFlower = flower.getChildNodes();
                                 for (int j = 0; j < childNodesOfFlower.getLength(); j++) {
@@ -57,22 +66,22 @@ public class DomParser implements Parser{
                                 }
 
                                 rose.setName(valuesOfFields.get("name"));
-                                rose.setOrigin(valuesOfFields.get("origin"));
+                                rose.setOrigin(Origin.valueOf(valuesOfFields.get("origin")));
                                 rose.setSoil(Soil.valueOf(valuesOfFields.get("soil")));
                                 rose.setColor(Color.valueOf(valuesOfFields.get("color")));
                                 rose.setLength(Integer.valueOf(valuesOfFields.get("length")));
                                 rose.setHeliophyte(Boolean.valueOf(valuesOfFields.get("heliophyte")));
-                                rose.setOptimalTemperature(Integer.valueOf(valuesOfFields.get("optimalTemperature")));
-                                rose.setWithSpikes(Boolean.valueOf(valuesOfFields.get("withSpikes")));
+                                rose.setOptimalTemperature(Integer.valueOf(valuesOfFields.get("optimal-temperature")));
+                                rose.setWithSpikes(Boolean.valueOf(valuesOfFields.get("with-spikes")));
 
-                                flowerList.add(rose);
+                                flowerList.add(rose);*/
 
                             }
 
-                            if(Peony.class
+                            if (Peony.class
                                     .getSimpleName()
-                                    .equals(flowerName)){
-                                Peony peony = new Peony();
+                                    .equals(flowerName)) {
+                                /*Peony peony = new Peony();
                                 Map<String, String> valuesOfFields = new HashMap<>();
                                 NodeList childNodesOfFlower = flower.getChildNodes();
                                 for (int j = 0; j < childNodesOfFlower.getLength(); j++) {
@@ -85,15 +94,15 @@ public class DomParser implements Parser{
                                 }
 
                                 peony.setName(valuesOfFields.get("name"));
-                                peony.setOrigin(valuesOfFields.get("origin"));
+                                peony.setOrigin(Origin.valueOf(valuesOfFields.get("origin")));
                                 peony.setSoil(Soil.valueOf(valuesOfFields.get("soil")));
                                 peony.setColor(Color.valueOf(valuesOfFields.get("color")));
                                 peony.setLength(Integer.valueOf(valuesOfFields.get("length")));
                                 peony.setHeliophyte(Boolean.valueOf(valuesOfFields.get("heliophyte")));
-                                peony.setOptimalTemperature(Integer.valueOf(valuesOfFields.get("optimalTemperature")));
+                                peony.setOptimalTemperature(Integer.valueOf(valuesOfFields.get("optimal-temperature")));
                                 peony.setMultirowed(Boolean.valueOf(valuesOfFields.get("multirowed")));
 
-                                flowerList.add(peony);
+                                flowerList.add(peony);*/
                             }
 
                         }
@@ -102,25 +111,15 @@ public class DomParser implements Parser{
                 }
             }
         } catch (ParserConfigurationException e) {
-            e.printStackTrace();
+            logger.error("", e);
+            throw new XmlParserException(e);
         } catch (SAXException e) {
-            e.printStackTrace();
+            logger.error("", e);
+            throw new XmlParserException(e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("", e);
+            throw new XmlParserException(e);
         }
         return flowerList;
     }
-
-    private Optional<String> getFilePath(String fileName){
-        ClassLoader classLoader = getClass().getClassLoader();
-        if (classLoader != null){
-            URL resource = classLoader.getResource(fileName);
-            if(resource != null){
-                String path = resource.getPath();
-                return Optional.of(path);
-            }
-        }
-        return Optional.empty();
-    }
-
 }

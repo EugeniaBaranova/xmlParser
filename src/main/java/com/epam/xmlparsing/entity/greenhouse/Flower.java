@@ -1,14 +1,49 @@
-package com.epam.xml.entity;
+package com.epam.xmlparsing.entity.greenhouse;
 
+import com.epam.xmlparsing.entity.Color;
+import com.epam.xmlparsing.entity.Origin;
+import com.epam.xmlparsing.entity.Soil;
+
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement(name = "Flower")
+@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class Flower {
 
+    @XmlAttribute(name = "name")
     protected String name;
-    protected String origin;
+    @XmlElement(name = "origin")
+    protected Origin origin;
+    @XmlElement(name = "soil")
     protected Soil soil;
+    @XmlElement(name = "color")
     protected Color color;
+    @XmlElement(name = "length")
     protected int length;
+    @XmlElement(name = "heliophyte")
     protected boolean heliophyte;
+    @XmlElement(name = "optimal-temperature")
     protected int optimalTemperature;
+
+    public Flower() {
+
+    }
+
+    public Flower(String name,
+                  Origin origin,
+                  Soil soil,
+                  Color color,
+                  int length,
+                  boolean heliophyte,
+                  int optimalTemperature) {
+        this.name = name;
+        this.origin = origin;
+        this.soil = soil;
+        this.color = color;
+        this.length = length;
+        this.heliophyte = heliophyte;
+        this.optimalTemperature = optimalTemperature;
+    }
 
     public String getName() {
         return name;
@@ -18,11 +53,11 @@ public abstract class Flower {
         this.name = name;
     }
 
-    public String getOrigin() {
+    public Origin getOrigin() {
         return origin;
     }
 
-    public void setOrigin(String origin) {
+    public void setOrigin(Origin origin) {
         this.origin = origin;
     }
 

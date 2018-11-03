@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flower>
 
-    <Rose>
-        <name>New Dawn</name>
+    <Rose name="New Down">
         <origin>China</origin>
-        <soil>CHERNOZEMS</soil>
+        <soil>chernozems</soil>
         <color>red</color>
         <length>10</length>
         <heliophyte>true</heliophyte>
@@ -12,33 +11,30 @@
         <withSpikes>true</withSpikes>
     </Rose>
 
-    <Rose>
-        <name>New Dawn</name>
+    <Rose name = "New Dawn">
         <origin>China</origin>
         <soil>PODZOL</soil>
-        <color>yellow</color>
+        <color>YELLOW</color>
         <length>10</length>
         <heliophyte>true</heliophyte>
         <optimalTemperature>22</optimalTemperature>
-        <withSpikes>true</withSpikes>
+        <withSpikes>false</withSpikes>
     </Rose>
 
-    <Peony>
-        <name>Akron</name>
+    <Peony name="Akron">
         <origin>China</origin>
         <soil>CHERNOZEMS</soil>
-        <color>red</color>
+        <color>RED</color>
         <length>12</length>
         <heliophyte>true</heliophyte>
         <optimalTemperature>22</optimalTemperature>
         <multirowed>false</multirowed>
     </Peony>
 
-    <Peony>
-        <name>Sorbet</name>
+    <Peony name = "Sorbet">
         <origin>China</origin>
         <soil>PODZOL</soil>
-        <color>red</color>
+        <color>RED</color>
         <length>8</length>
         <heliophyte>true</heliophyte>
         <optimalTemperature>22</optimalTemperature>
