@@ -21,15 +21,19 @@ public class DomParser implements Parser {
 
     private Logger logger = Logger.getLogger(DomParser.class);
 
+    private static final String NAME = "name";
+    private static final String ORIGIN = "origin";
+    private static final String SOIL = "soil";
+    private static final String COLOR = "color";
+    private static final String LENGTH = "length";
+    private static final String HELIOPHYTE = "heliophyte";
+    private static final String OPTIMAL_TEMPERATURE = "optimal-temperature";
+    private static final String WITH_SPIKES = "with-spikes";
+    private static final String MULTIROWED = "multirowed";
+
     private FilePathGetter filePathGetter = new FilePathGetter();
 
-    private List<String> flowerNames = new ArrayList<>();
-
-    {
-        flowerNames.add("Rose");
-        flowerNames.add("Peony");
-    }
-
+    private List<String> flowerNames = new ArrayList<>(Arrays.asList("Rose", "Peony"));
 
     public List<Flower> parse(String fileName) throws XmlParserException {
 
@@ -75,7 +79,7 @@ public class DomParser implements Parser {
                             if (node.hasAttributes()) {
                                 NamedNodeMap attributes = node.getAttributes();
 
-                                Node attribute = attributes.getNamedItem("name");
+                                Node attribute = attributes.getNamedItem(NAME);
 
                                 String name = attribute.getNodeName();
                                 String value = attribute.getNodeValue();
@@ -116,7 +120,7 @@ public class DomParser implements Parser {
                     fillCommonFields(flower, fieldsValues);
 
                     Rose rose = (Rose) flower;
-                    String withSpikes = fieldsValues.get("with-spikes");
+                    String withSpikes = fieldsValues.get(WITH_SPIKES);
                     rose.setWithSpikes(
                             Boolean.valueOf(withSpikes));
 
@@ -127,7 +131,7 @@ public class DomParser implements Parser {
                     fillCommonFields(flower, fieldsValues);
 
                     Peony peony = (Peony) flower;
-                    String multirowed = fieldsValues.get("multirowed");
+                    String multirowed = fieldsValues.get(MULTIROWED);
                     peony.setMultirowed(
                             Boolean.valueOf(multirowed));
 
@@ -140,13 +144,13 @@ public class DomParser implements Parser {
 
     private void fillCommonFields(Flower flower, Map<String, String> fieldsValues) {
 
-        String name = fieldsValues.get("name");
-        String origin = fieldsValues.get("origin");
-        String soil = fieldsValues.get("soil");
-        String color = fieldsValues.get("color");
-        String length = fieldsValues.get("length");
-        String heliophyte = fieldsValues.get("heliophyte");
-        String optimalTemperature = fieldsValues.get("optimal-temperature");
+        String name = fieldsValues.get(NAME);
+        String origin = fieldsValues.get(ORIGIN);
+        String soil = fieldsValues.get(SOIL);
+        String color = fieldsValues.get(COLOR);
+        String length = fieldsValues.get(LENGTH);
+        String heliophyte = fieldsValues.get(HELIOPHYTE);
+        String optimalTemperature = fieldsValues.get(OPTIMAL_TEMPERATURE);
 
 
         flower.setName(name);
