@@ -19,7 +19,6 @@ public class JaxbParser implements Parser {
     public List<Flower> parse(String fileName) throws XmlParserException {
 
         try {
-            //https://examples.javacodegeeks.com/core-java/xml/bind/jaxb-unmarshal-example/
 
             File file = new File(fileName);
 
