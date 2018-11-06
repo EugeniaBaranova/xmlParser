@@ -23,10 +23,10 @@ public class DomParserTest {
     private static final String NAME_AKRON = "Akron";
     private static final String NAME_SORBET = "Sorbet";
 
-    private DomParser domParser = new DomParser();
-
     @Test
     public void shouldParseWhenFileExist() throws XmlParserException {
+        //given
+        DomParser domParser = new DomParser();
         //when
         List<Flower> result = domParser.parse(FILE_NAME);
         //then
@@ -100,6 +100,8 @@ public class DomParserTest {
 
     @Test
     public void shouldNotParseWhenFileNotExist() throws XmlParserException {
+        //given
+        DomParser domParser = new DomParser();
         //when
         List<Flower> result = domParser.parse(NONEXISTENT_FILE_NAME);
         //then
@@ -108,6 +110,8 @@ public class DomParserTest {
 
     @Test
     public void shouldNotParseWhenGivenNull() throws XmlParserException {
+        //given
+        DomParser domParser = new DomParser();
         //when
         List<Flower> result = domParser.parse(null);
         //then

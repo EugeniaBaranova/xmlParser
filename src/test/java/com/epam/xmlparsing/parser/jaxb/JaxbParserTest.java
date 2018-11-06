@@ -16,21 +16,19 @@ import static org.hamcrest.core.Is.is;
 
 public class JaxbParserTest {
 
-    private static final String FILE_NAME = "src/test/resources/input.xml";
+    private static final String FILE_NAME = "input.xml";
     private static final String NONEXISTENT_FILE_NAME = "xnjksdkv";
 
     private static final String NAME_NEW_DOWN = "New Dawn";
     private static final String NAME_AKRON = "Akron";
     private static final String NAME_SORBET = "Sorbet";
 
-    private JaxbParser domParser = new JaxbParser();
-
     @Test
     public void shouldParseWhenFileExist() throws XmlParserException {
         //given
-        JaxbParser domParser = new JaxbParser();
+        JaxbParser jaxbParser = new JaxbParser();
         //when
-        List<Flower> result = domParser.parse(FILE_NAME);
+        List<Flower> result = jaxbParser.parse(FILE_NAME);
         //then
         Assert.assertThat(result.size(), is(4));
 
@@ -102,16 +100,20 @@ public class JaxbParserTest {
 
     @Test
     public void shouldNotParseWhenFileNotExist() throws XmlParserException {
+        //given
+        JaxbParser jaxbParser = new JaxbParser();
         //when
-        List<Flower> result = domParser.parse(NONEXISTENT_FILE_NAME);
+        List<Flower> result = jaxbParser.parse(NONEXISTENT_FILE_NAME);
         //then
         Assert.assertTrue(result.isEmpty());
     }
 
     @Test
     public void shouldNotParseWhenGivenNull() throws XmlParserException {
+        //given
+        JaxbParser jaxbParser = new JaxbParser();
         //when
-        List<Flower> result = domParser.parse(null);
+        List<Flower> result = jaxbParser.parse(null);
         //then
         Assert.assertTrue(result.isEmpty());
     }

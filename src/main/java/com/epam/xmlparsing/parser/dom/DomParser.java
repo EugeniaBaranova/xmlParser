@@ -21,6 +21,9 @@ public class DomParser implements Parser {
 
     private Logger logger = Logger.getLogger(DomParser.class);
 
+    private static final String ROSE = "Rose";
+    private static final String PEONY = "Peony";
+
     private static final String NAME = "name";
     private static final String ORIGIN = "origin";
     private static final String SOIL = "soil";
@@ -33,7 +36,7 @@ public class DomParser implements Parser {
 
     private FilePathGetter filePathGetter = new FilePathGetter();
 
-    private List<String> flowerNames = new ArrayList<>(Arrays.asList("Rose", "Peony"));
+    private List<String> flowerNames = new ArrayList<>(Arrays.asList(ROSE, PEONY));
 
     public List<Flower> parse(String fileName) throws XmlParserException {
 
@@ -110,11 +113,11 @@ public class DomParser implements Parser {
         return new ArrayList<>(0);
     }
 
-    private Optional<Flower> fillFields(String nodeName, Map<String, String> fieldsValues) {
+    public Optional<Flower> fillFields(String nodeName, Map<String, String> fieldsValues) {
         if (nodeName != null) {
             Flower flower = null;
             switch (nodeName) {
-                case "Rose":
+                case ROSE:
                     flower = new Rose();
 
                     fillCommonFields(flower, fieldsValues);
@@ -125,7 +128,7 @@ public class DomParser implements Parser {
                             Boolean.valueOf(withSpikes));
 
                     break;
-                case "Peony":
+                case PEONY:
                     flower = new Peony();
 
                     fillCommonFields(flower, fieldsValues);
@@ -142,7 +145,7 @@ public class DomParser implements Parser {
         return Optional.empty();
     }
 
-    private void fillCommonFields(Flower flower, Map<String, String> fieldsValues) {
+    public void fillCommonFields(Flower flower, Map<String, String> fieldsValues) {
 
         String name = fieldsValues.get(NAME);
         String origin = fieldsValues.get(ORIGIN);
