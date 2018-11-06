@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <xsd:element name = "Flower">
+    <xsd:element name="Flower">
         <xsd:complexType>
             <xsd:choice minOccurs="2" maxOccurs="unbounded">
-                <xsd:element ref="Rose" />
-                <xsd:element ref="Peony" />
+                <xsd:element ref="Rose"/>
+                <xsd:element ref="Peony"/>
             </xsd:choice>
         </xsd:complexType>
     </xsd:element>
 
-    <xsd:element name="name" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string"/>
     <xsd:element name="origin">
         <xsd:simpleType>
             <xsd:restriction base="xsd:string">
@@ -44,10 +44,10 @@
     <xsd:element name="with-spikes" type="xsd:boolean"/>
     <xsd:element name="multirowed" type="xsd:boolean"/>
 
-    <xsd:element name = "Rose">
+    <xsd:element name="Rose">
         <xsd:complexType>
+
             <xsd:all>
-                <xsd:element ref="name"/>
                 <xsd:element ref="origin"/>
                 <xsd:element ref="soil"/>
                 <xsd:element ref="color"/>
@@ -59,10 +59,10 @@
         </xsd:complexType>
     </xsd:element>
 
-    <xsd:element name = "Peony">
+    <xsd:element name="Peony">
         <xsd:complexType>
+
             <xsd:all>
-                <xsd:element ref="name"/>
                 <xsd:element ref="origin"/>
                 <xsd:element ref="soil"/>
                 <xsd:element ref="color"/>
@@ -73,7 +73,6 @@
             </xsd:all>
         </xsd:complexType>
     </xsd:element>
-
 
 
 </xsd:schema>

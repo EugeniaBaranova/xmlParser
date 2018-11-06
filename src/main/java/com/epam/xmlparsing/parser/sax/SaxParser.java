@@ -1,7 +1,7 @@
 package com.epam.xmlparsing.parser.sax;
 
 import com.epam.xmlparsing.entity.greenhouse.Flower;
-import com.epam.xmlparsing.parser.FilePathGetter;
+import com.epam.xmlparsing.utils.FilePathGetter;
 import com.epam.xmlparsing.parser.Parser;
 import com.epam.xmlparsing.parser.exception.XmlParserException;
 import org.apache.log4j.Logger;
@@ -9,10 +9,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

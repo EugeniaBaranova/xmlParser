@@ -4,7 +4,7 @@ import com.epam.xmlparsing.entity.*;
 import com.epam.xmlparsing.entity.greenhouse.Flower;
 import com.epam.xmlparsing.entity.greenhouse.Peony;
 import com.epam.xmlparsing.entity.greenhouse.Rose;
-import com.epam.xmlparsing.parser.FilePathGetter;
+import com.epam.xmlparsing.utils.FilePathGetter;
 import com.epam.xmlparsing.parser.Parser;
 import com.epam.xmlparsing.parser.exception.XmlParserException;
 import org.apache.log4j.Logger;

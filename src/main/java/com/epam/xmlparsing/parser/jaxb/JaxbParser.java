@@ -2,7 +2,7 @@ package com.epam.xmlparsing.parser.jaxb;
 
 import com.epam.xmlparsing.entity.greenhouse.Flower;
 import com.epam.xmlparsing.entity.greenhouse.Flowers;
-import com.epam.xmlparsing.parser.FilePathGetter;
+import com.epam.xmlparsing.utils.FilePathGetter;
 import com.epam.xmlparsing.parser.Parser;
 import com.epam.xmlparsing.parser.exception.XmlParserException;
 import org.apache.log4j.Logger;
