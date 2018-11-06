@@ -23,8 +23,6 @@ public class SaxParserTest {
     private static final String NAME_AKRON = "Akron";
     private static final String NAME_SORBET = "Sorbet";
 
-    private SaxParser saxParser = new SaxParser();
-
     @Test
     public void shouldParseWhenFileExist() throws XmlParserException {
         //given
