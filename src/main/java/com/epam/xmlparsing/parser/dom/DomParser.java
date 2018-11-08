@@ -107,7 +107,7 @@ public class DomParser implements Parser {
                 return flowerList;
             }
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            logger.error("", e);
+            logger.error(e.getMessage(), e);
             throw new XmlParserException(e);
         }
         return new ArrayList<>(0);

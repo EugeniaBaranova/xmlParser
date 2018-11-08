@@ -36,8 +36,8 @@ public class SaxParser implements Parser {
                 xmlReader.parse(filePath);
                 return xmlHandler.getFlowers();
             } catch (SAXException | IOException e) {
-                logger.error("", e);
-                throw new XmlParserException(e);
+                logger.error(e.getMessage(), e);
+                throw new XmlParserException(e.getMessage(), e);
             }
 
         }

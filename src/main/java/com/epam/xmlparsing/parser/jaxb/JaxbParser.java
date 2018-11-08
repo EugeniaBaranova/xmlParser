@@ -40,7 +40,7 @@ public class JaxbParser implements Parser {
             }
 
         } catch (JAXBException e) {
-            logger.error("", e);
+            logger.error(e.getMessage(), e);
             throw new XmlParserException(e.getMessage(), e);
         }
 

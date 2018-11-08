@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <xsd:element name="Flower">
+    <xsd:element name="Flowers">
         <xsd:complexType>
             <xsd:choice minOccurs="2" maxOccurs="unbounded">
                 <xsd:element ref="Rose"/>
@@ -14,27 +14,27 @@
     <xsd:element name="origin">
         <xsd:simpleType>
             <xsd:restriction base="xsd:string">
-                <xsd:enumeration value="China"/>
-                <xsd:enumeration value="Vietnam"/>
-                <xsd:enumeration value="Netherlands"/>
+                <xsd:enumeration value="CHINA"/>
+                <xsd:enumeration value="VIETNAM"/>
+                <xsd:enumeration value="NETHERLANDS"/>
             </xsd:restriction>
         </xsd:simpleType>
     </xsd:element>
     <xsd:element name="soil">
         <xsd:simpleType>
             <xsd:restriction base="xsd:string">
-                <xsd:enumeration value="podzol"/>
-                <xsd:enumeration value="sod-podzol"/>
-                <xsd:enumeration value="chernozems"/>
+                <xsd:enumeration value="PODZOL"/>
+                <xsd:enumeration value="SOD_PODZOL"/>
+                <xsd:enumeration value="CHERNOZEMS"/>
             </xsd:restriction>
         </xsd:simpleType>
     </xsd:element>
     <xsd:element name="color">
         <xsd:simpleType>
             <xsd:restriction base="xsd:string">
-                <xsd:enumeration value="red"/>
-                <xsd:enumeration value="blue"/>
-                <xsd:enumeration value="yellow"/>
+                <xsd:enumeration value="RED"/>
+                <xsd:enumeration value="BLUE"/>
+                <xsd:enumeration value="YELLOW"/>
             </xsd:restriction>
         </xsd:simpleType>
     </xsd:element>
@@ -46,7 +46,6 @@
 
     <xsd:element name="Rose">
         <xsd:complexType>
-
             <xsd:all>
                 <xsd:element ref="origin"/>
                 <xsd:element ref="soil"/>
@@ -56,12 +55,12 @@
                 <xsd:element ref="optimal-temperature"/>
                 <xsd:element ref="with-spikes"/>
             </xsd:all>
+            <xsd:attribute ref="name"/>
         </xsd:complexType>
     </xsd:element>
 
     <xsd:element name="Peony">
         <xsd:complexType>
-
             <xsd:all>
                 <xsd:element ref="origin"/>
                 <xsd:element ref="soil"/>
@@ -71,6 +70,7 @@
                 <xsd:element ref="optimal-temperature"/>
                 <xsd:element ref="multirowed"/>
             </xsd:all>
+            <xsd:attribute ref="name"/>
         </xsd:complexType>
     </xsd:element>
 

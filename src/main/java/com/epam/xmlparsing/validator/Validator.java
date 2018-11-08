@@ -1,7 +1,9 @@
 package com.epam.xmlparsing.validator;
 
+import com.epam.xmlparsing.validator.exeption.ValidationException;
+
 public interface Validator {
 
-    boolean validate(String fileName);
+    ValidationResult validate(String fileName) throws ValidationException;
 
 }
