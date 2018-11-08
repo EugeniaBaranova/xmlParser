@@ -4,6 +4,7 @@ import com.epam.xmlparsing.entity.*;
 import com.epam.xmlparsing.entity.greenhouse.Flower;
 import com.epam.xmlparsing.entity.greenhouse.Peony;
 import com.epam.xmlparsing.entity.greenhouse.Rose;
+import com.epam.xmlparsing.parser.FlowerFieldFiller;
 import com.epam.xmlparsing.utils.FilePathGetter;
 import com.epam.xmlparsing.parser.Parser;
 import com.epam.xmlparsing.parser.exception.XmlParserException;
@@ -35,6 +36,8 @@ public class DomParser implements Parser {
     private static final String MULTIROWED = "multirowed";
 
     private FilePathGetter filePathGetter = new FilePathGetter();
+
+    private FlowerFieldFiller flowerFieldFiller = new FlowerFieldFiller();
 
     private List<String> flowerNames = new ArrayList<>(Arrays.asList(ROSE, PEONY));
 
@@ -92,7 +95,7 @@ public class DomParser implements Parser {
 
                             String nodeName = node.getNodeName();
 
-                            Optional<Flower> flowerOptional = fillFields(nodeName, fieldsValues);
+                            Optional<Flower> flowerOptional = flowerFieldFiller.fillFields(nodeName, fieldsValues);
 
                             if (flowerOptional.isPresent()) {
                                 Flower flower = flowerOptional.get();
@@ -112,65 +115,5 @@ public class DomParser implements Parser {
         }
         return new ArrayList<>(0);
     }
-
-    public Optional<Flower> fillFields(String nodeName, Map<String, String> fieldsValues) {
-        if (nodeName != null) {
-            Flower flower = null;
-            switch (nodeName) {
-                case ROSE:
-                    flower = new Rose();
-
-                    fillCommonFields(flower, fieldsValues);
-
-                    Rose rose = (Rose) flower;
-                    String withSpikes = fieldsValues.get(WITH_SPIKES);
-                    rose.setWithSpikes(
-                            Boolean.valueOf(withSpikes));
-
-                    break;
-                case PEONY:
-                    flower = new Peony();
-
-                    fillCommonFields(flower, fieldsValues);
-
-                    Peony peony = (Peony) flower;
-                    String multirowed = fieldsValues.get(MULTIROWED);
-                    peony.setMultirowed(
-                            Boolean.valueOf(multirowed));
-
-                    break;
-            }
-            return Optional.ofNullable(flower);
-        }
-        return Optional.empty();
-    }
-
-    public void fillCommonFields(Flower flower, Map<String, String> fieldsValues) {
-
-        String name = fieldsValues.get(NAME);
-        String origin = fieldsValues.get(ORIGIN);
-        String soil = fieldsValues.get(SOIL);
-        String color = fieldsValues.get(COLOR);
-        String length = fieldsValues.get(LENGTH);
-        String heliophyte = fieldsValues.get(HELIOPHYTE);
-        String optimalTemperature = fieldsValues.get(OPTIMAL_TEMPERATURE);
-
-
-        flower.setName(name);
-        flower.setOrigin(
-                Origin.valueOf(origin));
-        flower.setSoil(
-                Soil.valueOf(soil));
-        flower.setColor(
-                Color.valueOf(color));
-        flower.setLength(
-                Integer.valueOf(length));
-        flower.setHeliophyte(
-                Boolean.valueOf(heliophyte));
-        flower.setOptimalTemperature(
-                Integer.valueOf(optimalTemperature));
-
-    }
-
 
 }

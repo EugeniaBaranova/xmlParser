@@ -40,27 +40,23 @@ public class XmlValidator implements Validator {
                     ErrorMessages.NULL_FILE_NAME);
         } else {
             Optional<String> filePathOptional = filePathGetter.getFilePath(fileName);
-            Optional<String> schemaPathOptional = filePathGetter.getFilePath(schemaName);
             if (filePathOptional.isPresent()) {
                 String filePath = filePathOptional.get();
 
+                Optional<String> schemaPathOptional = filePathGetter.getFilePath(schemaName);
                 if (schemaPathOptional.isPresent()) {
+                    String schemaPath = schemaPathOptional.get();
+
                     try {
-                        String schemaPath = schemaPathOptional.get();
-                        File schemaFile = new File(schemaPath);
-                        schema = schemaFactory.newSchema(schemaFile);
-                        SAXParserFactory parserFactory = SAXParserFactory.newInstance();
-                        parserFactory.setSchema(schema);
 
-                        SAXParser parser = parserFactory.newSAXParser();
-
-                        parser.parse(filePath, new ValidatorErrorHandler(logname, validationResult));
+                        checkUsingXsd(validationResult, filePath, schemaPath);
                         if (validationResult.getErrorMessage() == null) {
                             validationResult.setValidity(true);
                         } else {
                             validationResult.setValidity(false);
                         }
                         return validationResult;
+
                     } catch (SAXException | ParserConfigurationException | IOException e) {
                         logger.error(e.getMessage(), e);
                         throw new ValidationException(e.getMessage(), e);
@@ -76,5 +72,17 @@ public class XmlValidator implements Validator {
             }
         }
         return validationResult;
+    }
+
+    private void checkUsingXsd(ValidationResult validationResult, String filePath, String schemaPath)
+            throws SAXException, ParserConfigurationException, IOException {
+        File schemaFile = new File(schemaPath);
+        schema = schemaFactory.newSchema(schemaFile);
+        SAXParserFactory parserFactory = SAXParserFactory.newInstance();
+        parserFactory.setSchema(schema);
+
+        SAXParser parser = parserFactory.newSAXParser();
+
+        parser.parse(filePath, new ValidatorErrorHandler(logname, validationResult));
     }
 }
