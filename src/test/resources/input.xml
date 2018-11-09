@@ -31,7 +31,7 @@
         <multirowed>false</multirowed>
     </Peony>
 
-    <Peony name = "Sorbet">
+    <Peony name ="Sorbet">
         <origin>CHINA</origin>
         <soil>PODZOL</soil>
         <color>RED</color>

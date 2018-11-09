@@ -10,15 +10,14 @@ import com.epam.xmlparsing.entity.greenhouse.Rose;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.epam.xmlparsing.parser.FlowerFieldNames.*;
+import static com.epam.xmlparsing.parser.entity.FlowerFieldNames.*;
+import static com.epam.xmlparsing.parser.entity.FlowerNames.PEONY;
+import static com.epam.xmlparsing.parser.entity.FlowerNames.ROSE;
 
 public class FlowerFieldFiller {
 
-    private static final String ROSE = "Rose";
-    private static final String PEONY = "Peony";
-
     public Optional<Flower> fillFields(String flowerName, Map<String, String> fieldsValues) {
-        if (flowerName != null) {
+        if (flowerName != null && fieldsValues != null) {
             Flower flower = null;
             switch (flowerName) {
                 case ROSE:

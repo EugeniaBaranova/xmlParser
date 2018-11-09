@@ -3,7 +3,7 @@ package com.epam.xmlparsing.utils;
 import java.net.URL;
 import java.util.Optional;
 
-public class FilePathGetter {
+public class FileUtil {
 
     public Optional<String> getFilePath(String fileName) {
         if (fileName != null) {

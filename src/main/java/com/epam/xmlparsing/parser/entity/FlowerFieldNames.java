@@ -1,4 +1,4 @@
-package com.epam.xmlparsing.parser;
+package com.epam.xmlparsing.parser.entity;
 
 public class FlowerFieldNames {
 

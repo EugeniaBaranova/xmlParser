@@ -10,7 +10,8 @@ import java.io.IOException;
 
 public class ValidatorErrorHandler extends DefaultHandler {
 
-    private Logger logger = Logger.getLogger("com.epam.xmlparsing.validator");
+    private static final Logger logger = Logger.getLogger(ValidatorErrorHandler.class);
+
     private String log;
     private ValidationResult validationResult;
 
@@ -46,7 +47,7 @@ public class ValidatorErrorHandler extends DefaultHandler {
         try {
             logger.addAppender(new FileAppender(new SimpleLayout(), log));
         } catch (IOException e) {
-            logger.error("", e);
+            logger.error(e.getMessage(), e);
         }
     }
 }

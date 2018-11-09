@@ -2,7 +2,7 @@ package com.epam.xmlparsing.parser.jaxb;
 
 import com.epam.xmlparsing.entity.greenhouse.Flower;
 import com.epam.xmlparsing.entity.greenhouse.Flowers;
-import com.epam.xmlparsing.utils.FilePathGetter;
+import com.epam.xmlparsing.utils.FileUtil;
 import com.epam.xmlparsing.parser.Parser;
 import com.epam.xmlparsing.parser.exception.XmlParserException;
 import org.apache.log4j.Logger;
@@ -17,13 +17,13 @@ import java.util.Optional;
 
 public class JaxbParser implements Parser {
 
-    private Logger logger = Logger.getLogger(JaxbParser.class);
+    private static final Logger logger = Logger.getLogger(JaxbParser.class);
 
-    private FilePathGetter filePathGetter = new FilePathGetter();
+    private FileUtil fileUtil = new FileUtil();
 
     public List<Flower> parse(String fileName) throws XmlParserException {
 
-        Optional<String> filePathOptional = filePathGetter.getFilePath(fileName);
+        Optional<String> filePathOptional = fileUtil.getFilePath(fileName);
 
         try {
 
@@ -43,7 +43,6 @@ public class JaxbParser implements Parser {
             logger.error(e.getMessage(), e);
             throw new XmlParserException(e.getMessage(), e);
         }
-
         return new ArrayList<>(0);
     }
 }

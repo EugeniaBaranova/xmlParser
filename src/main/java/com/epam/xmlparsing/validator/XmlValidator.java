@@ -1,6 +1,6 @@
 package com.epam.xmlparsing.validator;
 
-import com.epam.xmlparsing.utils.FilePathGetter;
+import com.epam.xmlparsing.utils.FileUtil;
 import com.epam.xmlparsing.validator.exeption.ValidationException;
 import org.apache.log4j.Logger;
 import org.xml.sax.SAXException;
@@ -21,12 +21,11 @@ public class XmlValidator implements Validator {
 
     private String schemaName;
 
-    private Schema schema;
     private String logname = "logs/log.txt";
     private String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
     private SchemaFactory schemaFactory = SchemaFactory.newInstance(language);
 
-    private FilePathGetter filePathGetter = new FilePathGetter();
+    private FileUtil fileUtil = new FileUtil();
 
     public XmlValidator(String schemaName) {
         this.schemaName = schemaName;
@@ -39,11 +38,11 @@ public class XmlValidator implements Validator {
             validationResult.setErrorMessage(
                     ErrorMessages.NULL_FILE_NAME);
         } else {
-            Optional<String> filePathOptional = filePathGetter.getFilePath(fileName);
+            Optional<String> filePathOptional = fileUtil.getFilePath(fileName);
             if (filePathOptional.isPresent()) {
                 String filePath = filePathOptional.get();
 
-                Optional<String> schemaPathOptional = filePathGetter.getFilePath(schemaName);
+                Optional<String> schemaPathOptional = fileUtil.getFilePath(schemaName);
                 if (schemaPathOptional.isPresent()) {
                     String schemaPath = schemaPathOptional.get();
 
@@ -77,7 +76,7 @@ public class XmlValidator implements Validator {
     private void checkUsingXsd(ValidationResult validationResult, String filePath, String schemaPath)
             throws SAXException, ParserConfigurationException, IOException {
         File schemaFile = new File(schemaPath);
-        schema = schemaFactory.newSchema(schemaFile);
+        Schema schema = schemaFactory.newSchema(schemaFile);
         SAXParserFactory parserFactory = SAXParserFactory.newInstance();
         parserFactory.setSchema(schema);
 
